@@ -2,20 +2,13 @@
 #include <stdlib.h>
 
 int list[] = {};
-
 int main()
 {
     int num, val;
     scanf("%d", &num);
-    if (1 <= num && num <= 1000000)
-    {
-        for (int i = 0; i < num; i++)
-        {
-            scanf("%d", &val);
-            if (-1000000<= val && val <= 1000000)
-                list[i] = val;
-        }
-    }
+
+    for (int i = 0; i < num; i++)
+        scanf("%d", &list[i]);
     int max = -10000001, min = 10000001;
     
     for (int i = 0; i < num; i++)
@@ -24,9 +17,6 @@ int main()
             max = list[i];
         if (list[i] < min)
             min = list[i];
-        
     }
     printf("%d %d\n", min, max);
-
-    return 0;
 }
