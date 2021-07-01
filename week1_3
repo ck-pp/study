@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int list[10] = {};
+    int a, b, c, multi, remind;
+    scanf("%d", &a);
+    scanf("%d", &b);
+    scanf("%d", &c);
+    multi = a * b * c;
+    
+    while (multi != 0)
+    {
+        remind = multi % 10;
+        list[remind]++; // list의 자릿수번째 원소 +1
+        multi /= 10;
+    }
+    for (int j = 0; j < 9; j++)
+        printf("%d\n", list[j]);
+    printf("%d", list[9]);
+}
