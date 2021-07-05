@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+    int num;
+    scanf("%d", &num);
+    int *score = (int*)malloc(sizeof(int)*num); // malloc은 void*형 반환하므로 int* 형변환 필요!
+                                                //(배열 크기는 지정해줘야하는데 테스트셋 수 벙뮈가 지정되어있지 않으므로 동적메모리할당 사용)
+    for (int i = 0; i < num; i++)
+    {
+        int j = 0, sum = 0, cnt = 0;
+        char list[80] = ""; // 문자열 길이 최대 80?이므로
+        scanf("%s", list); // 문자열로 한번에 받으면 알아서 하나하나 원소로 저장됨
+        while (list[j] != NULL)
+        {
+            if (list[j] == 'O') // 문자열은 strcmp로, 문자는 그냥 ==로 비교한다.
+                cnt++;
+            else
+                cnt = 0;
+            j++;
+            sum += cnt;
+        }
+        score[i] = sum; // 점수 합 저장
+    }
+    for (int i = 0; i < num - 1; i++)
+        printf("%d\n", score[i]);
+    printf("%d", score[num-1]);
+}
