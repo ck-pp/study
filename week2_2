@@ -1,3 +1,5 @@
+// 1차원배열(8958)
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
