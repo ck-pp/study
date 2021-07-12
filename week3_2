@@ -1,0 +1,23 @@
+// 문자열(2675)
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int T, R;
+    scanf("%d", &T);
+    for (int i = 0; i < T; i++)
+    {
+        int k = 0;
+        char str[20] = "";
+        scanf("%d%s", &R, str);
+        while(str[k] != NULL)
+        {
+            for (int j = 0; j < R; j++)
+                printf("%c", str[k]);
+            k++;
+        }
+        printf("\n");
+    }
+}
