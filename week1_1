@@ -1,3 +1,5 @@
+// 1차원배열(10818)
+
 #include <stdio.h>
 #include <stdlib.h>
 
