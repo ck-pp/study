@@ -1,0 +1,30 @@
+// 문자열(11809)
+// (아스키코드표 사용 : 문자 -> 정수형(인덱스) 변환 필요)
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char string[100] = "";
+    char alpha[30] = "abcdefghijklmnopqrstuvwxyz";
+    int check[30] = {};
+    int i = 0;
+    scanf("%s", string); // 문자열(string) 입력받을때는 scanf여도 &사용x
+    while (string[i] != '\0') // 문자열에서의 null값 == '\0'
+    {
+        for (int j = 0; j < 26; j++)
+        {
+            if (string[i] == alpha[j] && check[(int)alpha[j]-97] == 0) // 정수배열에서의 null값 == 0
+                check[(int)alpha[j] - 97] = i+1; // 첫번째 글자에 0이 저장되는데 그러면 나중에 포함x 알파벳과 구분하기 어려우므로!
+        }
+        i++;
+    }
+    for (int k = 0; k < 26; k++)
+    {
+        if (check[k] != 0)
+            printf("%d ",check[k] - 1); // 아까 +1해서 저장했으니까 -1해서 출력
+        else
+            printf("-1 ");
+    }
+}
