@@ -1,0 +1,21 @@
+// 1152번
+// 공백포함 문자열 입력받기 / 이때, ' '(스페이스바/공백)과 '\0'(NULL)은 구분됨!
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char sen[1000000] = "";
+    scanf("%[^\n]s", sen);// fgets(sen, 1000000, stdin); (공백포함 문자열 : fgets / gets / "%[^\n]s"
+    int k = 0, cnt = 0;
+    while (!(sen[k] == '\0'))
+    {
+        if (sen[k] == ' ' && sen[k+1] != '\0') // 마지막 공백 제외한 공백 개수 카운트
+            cnt++;
+        k++;
+    }
+    if (sen[0] == '\0' || sen[0] == ' ') // 처음에 공백이 나오거나 아무것도 입려하지 않은 경우의 공백은 카운트x
+        cnt--;
+    printf("%d", cnt+1); // 공백개수 + 1 == 단어 개수
+}
