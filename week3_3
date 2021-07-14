@@ -1,3 +1,5 @@
+// 1157번 (대소문자 변환 필요 (아스키코드표 사용))
+
 #include <stdio.h>
 #include <stdlib.h>
 
