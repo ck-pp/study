@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int k;
+    char str[1000000] = "";
+    char alpha[30] = "abcdefghijklmnopqrstuvwxyz";
+    int cnt[30] = {};
+    scanf("%s", str);
+    while (str[k] != '\0')
+    {
+        if (str[k] < 'a')
+            str[k] = str[k] + 32; // 대->소문자 변환
+        for (int i = 0; i < 26; i++)
+        {
+            if (str[k] == alpha[i])
+                cnt[(int)alpha[i] - 97]++;
+        }
+        k++;
+    }
+    int max = -1; // max = 0 초기화하면, NULL인 값과 동일시되므로 구분하기위해!?
+    char max_ch;
+    for (int j = 0; j < 26; j++)
+    {
+        if (max < cnt[j])
+        {
+            max = cnt[j];
+            max_ch = (char)(j+97)-32; // 대문자로 출력(소->대 : -32, 소<-대 : +32)
+        }
+        else if (max == cnt[j])
+            max_ch = '?'; // c언어에서는 str(문자열) -> "", char(문자) -> '' 구별하나봄!
+    }
+    printf("%c", max_ch);
+}
