@@ -1,0 +1,36 @@
+// 2908번 (역순배열 && 갹 쟈릿수 비교)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define SIZE 4
+
+int main()
+{
+    int i = 0, j = 0;
+    char a[SIZE] = "", b[SIZE] = "";
+    char new_a[SIZE], new_b[SIZE];
+    scanf("%s%s", a, b);
+    int k = 2;
+    while (a[i] != '\0' && b[i] != '\0')
+    {
+        new_a[k] = a[i];
+        new_b[k] = b[i];
+        k--; i++;
+    }
+    while (new_a[j] != '\0' && new_b[j] != '\0')
+    {
+        if (new_a[j] > new_b[j])
+        {
+            printf("%s", new_a);
+            break;
+        }
+        else if (new_a[j] < new_b[j])
+        {
+            printf("%s", new_b);
+            break;
+        }
+        else
+            j++;
+    }
+}
