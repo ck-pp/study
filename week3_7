@@ -1,0 +1,26 @@
+// 2941번(크로아티아 알파벳 - 규칙 생각 * dz= 주의 *)
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 101
+
+int main()
+{
+    int cnt = 0, i = 0;
+    char str[SIZE] = "";
+    scanf("%s", str);
+    while(str[i] != '\0')
+    {
+        if ((str[i] == 'l' || str[i] == 'n') && str[i+1] == 'j')
+        {
+            cnt++; i++;
+        }
+        else if (str[i] == 'd' && str[i+1] == 'z' && str[i+2] == '=')
+        {
+            cnt++; i++;
+        }
+        else if (!(str[i] == '=' || str[i] == '-'))
+            cnt++;
+        i++;
+    }
+    printf("%d", cnt);
+}
