@@ -1,0 +1,36 @@
+// 1316번 (단어가 1글자인 경우 고려 필요 && 그룹 단어 아닌 경우 조건 생각 복잡)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define SIZE 101
+
+int main()
+{
+    int N, cnt = 0;
+    scanf("%d", &N);
+    for (int i = 0; i < N; i++)
+    {
+        int j = 0, flag = 1;
+        int count[26] = {0};
+        char str[SIZE] = "";
+        scanf("%s", str);
+        while (str[j] != '\0')
+        {
+            if (strlen(str) == 1)
+                break;
+            // 그룹 단어가 아닌 경우 (앞의 문자와 연속x && 앞에서 이미 한 번 나왔던 경우)
+            // 뒤는 왜 체크 안 해줘도 되냐 -> 어차피 앞에서 break가 걸리므로!
+            if (str[j-1] != str[j] && count[str[j]-97] != 0)
+            {
+                flag = 0;
+                break;
+            }
+            count[str[j] - 97]++;
+            j++;
+        }
+        if (flag == 1)
+            cnt++;
+    }  
+        printf("%d", cnt);
+}
