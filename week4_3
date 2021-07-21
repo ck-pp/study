@@ -1,0 +1,36 @@
+//1193번 (규칙&&수식 찾기)
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int X, i = 0, sum = 0, k; // k : i를 사용한 조건문이 있기 때문에 i를 변경하면 x, 따라서 i값을 받는 변수 k를 선언
+    int denom, numer;
+    scanf("%d", &X);
+    while(1)
+    {
+        i++;
+        sum += 1*i;
+        if (sum >= X)
+            break;
+    }
+    k = i;
+    for (int j =  1; j <= i; j++)
+    {
+        if (i % 2 == 0)
+        {
+            denom = k;
+            numer = j;
+        }
+        else
+        {
+            denom = j;
+            numer = k;
+        }
+        if (i - (sum - X) == j)
+            break;
+        k--;
+    }
+    printf("%d/%d", numer, denom);
+    
+}
