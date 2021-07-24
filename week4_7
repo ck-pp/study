@@ -1,0 +1,22 @@
+// 2839번 (나눗셈(몫), 나머지 연산 사용, 나누는 순서 중요(작은 수 == 3부터))
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int N, cnt = 0;
+    scanf("%d", &N);
+    for (int i = 0; N >= 3; i++)
+    {
+        if(N % 5 == 0)
+            break;
+        cnt++;
+        N -= 3;
+    }
+    cnt += N / 5;
+    if (N % 5 != 0)
+        printf("-1");
+    else
+        printf("%d", cnt);
+}
