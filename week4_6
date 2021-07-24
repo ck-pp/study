@@ -1,0 +1,28 @@
+// 2775번 (k, n 조건범위 잘 확인)
+
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 15
+
+int main()
+{
+    int a, b, T;
+    scanf("%d", &T);
+    for (int i = 0; i < T; i++)
+    {
+        int table[SIZE][SIZE] = {0,}; // 2차원 배열 column 크기만 주면 쓰레드에러(?). row만 주면 아예 빌드가 안됨.
+        scanf("%d%d", &a, &b);
+        for (int j = 0; j <= a; j++)
+        {
+            table[j][1] = 1;
+            for (int k = 2; k <= b; k++)
+            {
+                if (j == 0)
+                    table[j][k] = k;
+                else
+                    table[j][k] = table[j][k-1] + table[j-1][k];
+            }
+        }
+        printf("%d\n", table[a][b]);
+    }
+}
