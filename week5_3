@@ -1,0 +1,61 @@
+// 2581번 (코드 간결화 필요)
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 1500 // 10000이하 소수 : 1229개
+
+int sum(int A[])
+{
+    int sum = 0, m = 0;
+    while (A[m] != 0)
+    {
+        sum += A[m];
+        m++;
+    }
+    return sum;
+}
+
+int min(int A[])
+{
+    int min = 10001, m = 0;
+    while (A[m] != 0)
+    {
+        if (A[m] < min)
+            min = A[m];
+        m++;
+    }
+    return min;
+}
+
+int main()
+{
+    int M, N, pri = 0, k = 0;
+    int prime[SIZE] = {0};
+    scanf("%d%d", &M, &N);
+    for (int i = M; i < N+1; i++)
+    {
+        int result = 1;
+        if (i != 1)
+        {
+            for (int j = 2; j < i; j++)
+            {
+                if (i % j == 0)
+                {
+                    result = 0;
+                    break;
+                }
+            }
+            if (result == 1)
+            {
+                prime[k++] = i;
+                pri = 1;
+            }
+        }
+    }
+    if (pri == 0)
+        printf("-1");
+    else
+        printf("%d\n%d", sum(prime), min(prime));
+    
+
+    return 0;
+}
