@@ -1,0 +1,31 @@
+// 1011번 (시간초과)
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int T, x, y;
+    scanf("%d", &T);
+    for (int i = 0; i < T; i++)
+    {
+        scanf("%d%d", &x, &y);
+        int cnt = 3, k = 1, i = 2, flag = 0; // 규칙 찾아봤을때 카운트가 3부터 시작해서 ++하는 것을 볼 수 있음 (아이패드 필기 참고)
+        if (1 <= y-x && y-x <= 3)
+            cnt = y-x;
+        else
+        {
+            x++; y--;
+            while(1)
+            {
+                if (k <= y-x && y-x < k+i)
+                    break;
+                k += i;
+                if (flag % 2 != 0)
+                    i++;
+                flag++;
+                cnt++;
+            }
+        }
+        printf("%d\n", cnt);
+    }
+}
