@@ -1,0 +1,36 @@
+// 4153번
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 3
+
+int main()
+{
+    int side[SIZE] = {0}, H, w, h, k;
+    int re[SIZE-1] = {0};
+    while (1)
+    {
+        scanf("%d%d%d", &side[0], &side[1], &side[2]);
+        if (side[0]+side[1]+side[2] == 0)
+            exit(0);
+        H = side[0];
+        for (int i = 1; i < SIZE; i++)
+        {
+            if (H < side[i])
+                H = side[i];
+        }
+        k = 0;
+        for (int j = 0; j < SIZE; j++)
+        {
+            if (side[j] != H)
+            {
+                re[k] = side[j];
+                k++;
+            }
+        }
+        if (re[0]*re[0] + re[1]*re[1] == H*H)
+            printf("right\n");
+        else
+            printf("wrong\n");
+    }
+    return 0;
+}
