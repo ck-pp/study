@@ -1,0 +1,20 @@
+// 1085번
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 10
+
+int main()
+{
+    int x, y, w, h, i = 0, min = 1001;
+    scanf("%d%d%d%d", &x, &y, &w, &h);
+    int distance[SIZE] = {x, w-x, y, h-y};
+    while (distance[i] != 0)
+    {
+        if (min > distance[i])
+            min = distance[i];
+        i++;
+    }
+    printf("%d", min);
+
+    return 0;
+}
