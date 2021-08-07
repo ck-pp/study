@@ -1,0 +1,69 @@
+// 9020번
+// 시간초과
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 10001
+
+int main()
+{
+    int T, n;
+    int prime[SIZE] = {0, 1};
+    scanf("%d", &T);
+    for (int i = 0; i < T; i++)
+    {
+        scanf("%d", &n);
+        for (int j = 2; j < n; j++)
+        {
+            for (int k = 2; j*k < n; k++)
+                prime[j*k] = 1;
+        }
+        int m = 2, l = 0, min = 10001;
+        int sub[2] = {0};
+        while (m <= n)
+        {
+            for (int i = m; i < n; i++)
+            {
+                if (m+i == n && prime[m] + prime[i] == 0)
+                {
+                    if (m - i < min)
+                        sub[l] = m; sub[l+1] = i;
+                    break;
+                }
+            }
+            m++;
+        }
+        printf("%d %d\n", sub[0], sub[1]);
+    }
+
+    return 0;
+}
+
+// 정답
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 10001
+
+int main()
+{
+    int T, n, m, l;
+    int prime[SIZE] = {0, 1};
+    scanf("%d", &T);
+    for (int i = 0; i < T; i++)
+    {
+        scanf("%d", &n);
+        for (int j = 2; j < n; j++)
+        {
+            for (int k = 2; j*k < n; k++)
+                prime[j*k] = 1;
+        }
+        m = n/2, l = n - m; // 쨌든 (작은수, 큰수)로 나타내야하므로 작은수를 그 수의 반부터 시작해서 줄여나감
+        while (prime[m] == 1 || prime[l] == 1)
+        {
+            m--;
+            l = n - m;
+        }
+        printf("%d %d\n", m, l);
+    }
+
+    return 0;
+}
