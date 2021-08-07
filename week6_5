@@ -1,0 +1,32 @@
+// 3009번
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 4 
+
+int main()
+{
+    int x[SIZE] = {0}, y[SIZE] = {0}, k = 0;
+    for (int i = 0; i < 3; i++)
+    scanf("%d%d", &x[i], &y[i]);
+    
+    if (x[k] == x[k+1])
+        x[3] = x[k+2];
+    else
+    {
+        if (x[k] == x[k+2])
+            x[3] = x[k+1];
+        else
+            x[3] = x[k];
+    }
+    if (y[k] == y[k+1])
+        y[3] = y[k+2];
+    else
+    {
+        if (y[k] == y[k+2])
+            y[3] = y[k+1];
+        else
+            y[3] = y[k];
+    }
+    printf("%d %d", x[3], y[3]);
+    return 0;
+}
