@@ -1,0 +1,14 @@
+// 3053번
+#include <stdio.h>
+#include <stdlib.h>
+#define PI 3.14159265359
+
+int main()
+{
+    int R;
+    scanf("%d", &R);
+    printf("%.6f\n", R*R*PI); // 유클리드 기하학
+    printf("%.6f", R*R*2.0); // 택시 기하학 (원 == 마름모꼴, 대각선 형태가 안되므로 모눈종이 생각하면됨)
+
+    return 0;
+}
