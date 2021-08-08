@@ -1,0 +1,25 @@
+// 1002번
+#include <stdio.h>
+#include <stdlib.h>
+// 두 원이 만나는 점의 개수 구하기 (원 중심 : (x1, y1), 반지름 : r1인 원과 중심 : (x2, y2), 반지름 : r2인 원)
+int main()
+{
+    int T, x1, y1, x2, y2, r1, r2, cen_dis, r_sum, r_sub;
+    scanf("%d", &T);
+    for (int i = 0; i < T; i++)
+    {
+        scanf("%d%d%d%d%d%d", &x1, &y1, &r1, &x2, &y2, &r2);
+        cen_dis = (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1);
+        r_sum = r1 + r2;
+        r_sub = r1 - r2;
+        if (cen_dis == 0 && r1 == r2)
+            printf("-1\n");
+        else if (cen_dis == r_sum*r_sum || cen_dis == r_sub*r_sub)
+            printf("1\n");
+        else if(cen_dis > r_sum*r_sum || cen_dis < r_sub*r_sub)
+            printf("0\n");
+        else
+            printf("2\n"); // 교점 개수가 2일때만 조건이 하나밖에 없으므로 이걸 else로 빼줌
+    }
+    return 0;
+}
